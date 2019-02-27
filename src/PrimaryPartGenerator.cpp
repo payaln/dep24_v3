@@ -3,22 +3,43 @@
 //
 #include "PrimaryPartGenerator.h"
 
+
 void PrimaryPartGenerator::GeneratePrimaries(G4Event *anEvent) {
+    GGamma->SetParticleMomentumDirection({-1.,G4RandFlat::shoot(-0.5, 0.5),G4RandFlat::shoot(-0.5, 0.5)});
+    GenEnergy();
+    GGamma->SetParticlePosition({-20, G4RandFlat::shoot(-2, 2), G4RandFlat::shoot(-100, 100)});
     GGamma->GeneratePrimaryVertex(anEvent);
 }
 
 PrimaryPartGenerator::PrimaryPartGenerator() {
 
     G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-    G4String particleName;
     G4ParticleDefinition* particle
-            = particleTable->FindParticle(particleName="gamma");
+            = particleTable->FindParticle("gamma");
     GGamma = new G4ParticleGun(1);
-//    GGamma->SetParticleDefinition(G4Gamma::GammaDefinition());
     GGamma->SetParticleDefinition(particle);
+}
 
-    GGamma->SetParticlePosition({100, 0, 0});
-    CLHEP::RandFlat(CLHEP)
-    GGamma->SetParticleMomentumDirection({-1.,CLHEP::RandFlat::shoot(-1, 1),CLHEP::RandFlat::shoot(-1, 1)});
-    GGamma->SetParticleEnergy(2*MeV);
+void PrimaryPartGenerator::GenEnergy() {
+    G4int k_E = G4RandFlat::shootInt(4);
+//    k_E = 1;
+    switch (k_E) {
+        case 0:
+            GGamma->SetParticleEnergy(662*keV);
+            break;
+        case 1:
+            GGamma->SetParticleEnergy(1173*keV);
+            break;
+        case 2:
+            GGamma->SetParticleEnergy(1332*keV);
+            break;
+        case 3:
+            GGamma->SetParticleEnergy(122*keV);
+            break;
+        case 4:
+            GGamma->SetParticleEnergy(511*keV);
+            break;
+        default:
+            break;
+    }
 }

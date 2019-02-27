@@ -6,9 +6,13 @@
 #include <G4UserSteppingAction.hh>
 #include <G4Step.hh>
 
+#include "TrackAction.h"
+
 class StepAction : public G4UserSteppingAction  {
 public:
-    void UserSteppingAction(const G4Step *step) override {
-//        G4UserSteppingAction::UserSteppingAction(step);
-    }
+    explicit StepAction(TrackAction* tr);
+    void UserSteppingAction(const G4Step *step) override;
+
+private:
+    TrackAction* track;
 };

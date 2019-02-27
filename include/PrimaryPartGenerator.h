@@ -9,8 +9,7 @@
 #include <G4Gamma.hh>
 #include <G4ParticleTable.hh>
 #include <G4SystemOfUnits.hh>
-#include <CLHEP/Random/RandFlat.h>
-#include <CLHEP/Random/Random.h>
+#include <Randomize.hh>
 
 class PrimaryPartGenerator : public G4VUserPrimaryGeneratorAction {
 public:
@@ -19,4 +18,6 @@ public:
 
 private:
     G4ParticleGun* GGamma;
+
+    void GenEnergy();
 };

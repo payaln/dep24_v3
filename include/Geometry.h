@@ -20,8 +20,6 @@
 #include <G4EqMagElectricField.hh>
 #include <G4MagIntegratorDriver.hh>
 #include <G4ChordFinder.hh>
-#include <G4TransportationManager.hh>
-
 
 class Geometry : public G4VUserDetectorConstruction {
 public:

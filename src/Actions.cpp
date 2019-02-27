@@ -4,9 +4,13 @@
 #include "Actions.h"
 
 void Actions::Build() const {
-    SetUserAction(new StepAction);
-    SetUserAction(new RunAction);
+    auto run = new RunAction;
+    auto event = new EventAction(run);
+    auto track = new TrackAction(event);
+    SetUserAction(new StepAction(track));
+    SetUserAction(track);
+    SetUserAction(event);
+    SetUserAction(run);
     SetUserAction(new PrimaryPartGenerator);
-    SetUserAction(new EventAction);
 }
 
