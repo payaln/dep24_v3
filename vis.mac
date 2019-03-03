@@ -2,14 +2,12 @@
 /vis/open OGL 600x800-0+0
 /vis/viewer/set/autoRefresh false
 
-/vis/ogl/set/displayListLimit 1000
+/vis/ogl/set/displayListLimit 10000
 
 # Draw geometry:
 /vis/drawVolume
 
 # Specify view angle:
-#/vis/viewer/set/viewpointVector -1 0 0
-#/vis/viewer/set/viewpointVector -1 1 -0.5
 /vis/viewer/set/viewpointVector 1 0 0
 /vis/viewer/set/lightsVector -1 0 0
 /vis/viewer/set/style surface
@@ -30,10 +28,9 @@
 # Decorations
 /vis/set/textColour yellow
 /vis/set/textLayout right
-#/vis/scene/add/text2D 0.9 -.9 24 ! !  Cs-137
-#/vis/scene/add/text2D 0.9 -.9 24 ! ! Xe_isotopes
-#/vis/scene/add/text2D 0.9 -.9 24 ! ! Optics
-#/vis/scene/add/text2D -0.7 -0.9 24 ! ! 100/MeV
+/vis/scene/add/text2D .9 -.8 14 ! !   Co-60, Cs-137, Na22, Ba133
+/vis/scene/add/text2D .9 -.9 14 ! !  (1.173, 1.332)(0.662)(0.511)(0.122)
+/vis/scene/add/text2D -.7 -.9 14 ! !  liquid Xenon
 
 # Axes
 #/vis/scene/add/axes  0 0 0 0.02  # Simple axes: x=red, y=green, z=blue.
@@ -50,4 +47,4 @@
 # Re-establish auto refreshing and verbosity:
 /vis/viewer/set/autoRefresh true
 
-/run/beamOn 1000
+/run/beamOn 5000
