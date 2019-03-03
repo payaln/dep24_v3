@@ -13,6 +13,9 @@ void PrimaryPartGenerator::GeneratePrimaries(G4Event *anEvent) {
 
 PrimaryPartGenerator::PrimaryPartGenerator() {
 
+    (new GlobalMessenger<PrimaryPartGenerator>(this))
+        ->AddCommand<G4bool>("set_single_energy", &PrimaryPartGenerator::setSingleEnergy, "set single(true) or mix(false) energy");
+
     G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
     G4ParticleDefinition* particle
             = particleTable->FindParticle("gamma");
@@ -21,8 +24,12 @@ PrimaryPartGenerator::PrimaryPartGenerator() {
 }
 
 void PrimaryPartGenerator::GenEnergy() {
-    G4int k_E = G4RandFlat::shootInt(4);
-//    k_E = 1;
+    G4int k_E;
+    if (singleEnergy) {
+        k_E = 1;
+    } else {
+        k_E = G4RandFlat::shootInt(4);
+    }
     switch (k_E) {
         case 0:
             GGamma->SetParticleEnergy(662*keV);
@@ -42,4 +49,8 @@ void PrimaryPartGenerator::GenEnergy() {
         default:
             break;
     }
+}
+
+void PrimaryPartGenerator::setSingleEnergy(G4bool singleEnergy) {
+    PrimaryPartGenerator::singleEnergy = singleEnergy;
 }

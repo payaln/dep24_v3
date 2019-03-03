@@ -11,13 +11,17 @@
 #include <G4SystemOfUnits.hh>
 #include <Randomize.hh>
 
+#include "GlobalMessenger.h"
+
 class PrimaryPartGenerator : public G4VUserPrimaryGeneratorAction {
 public:
     PrimaryPartGenerator();
     void GeneratePrimaries(G4Event *anEvent) override;
+    void setSingleEnergy(G4bool singleEnergy);
 
 private:
     G4ParticleGun* GGamma;
+    G4bool singleEnergy;
 
     void GenEnergy();
 };

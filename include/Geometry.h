@@ -20,11 +20,21 @@
 #include <G4EqMagElectricField.hh>
 #include <G4MagIntegratorDriver.hh>
 #include <G4ChordFinder.hh>
+#include <G4RunManager.hh>
+#include <G4GeometryManager.hh>
+#include <G4PhysicalVolumeStore.hh>
+#include <G4LogicalVolumeStore.hh>
+#include <G4SolidStore.hh>
+#include <G4UImanager.hh>
+#include "GlobalMessenger.h"
 
 class Geometry : public G4VUserDetectorConstruction {
 public:
+    Geometry();
     G4VPhysicalVolume *Construct() override;
+    void setNewXeDensity(G4double value);
 
 private:
     G4NistManager* nist;
+    G4double XeDensity;
 };

@@ -10,8 +10,8 @@
 
 #include "DataSaver.h"
 
-#define CHANNEL_COUNT 130
-#define SPECTRE_WIDTH (1.3*MeV)
+#define CHANNEL_COUNT 150
+#define SPECTRE_WIDTH (1.5*MeV)
 
 class RunAction : public G4UserRunAction {
 public:

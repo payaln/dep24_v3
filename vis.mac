@@ -2,7 +2,7 @@
 /vis/open OGL 600x800-0+0
 /vis/viewer/set/autoRefresh false
 
-/vis/ogl/set/displayListLimit 500000
+/vis/ogl/set/displayListLimit 1000
 
 # Draw geometry:
 /vis/drawVolume
@@ -50,5 +50,4 @@
 # Re-establish auto refreshing and verbosity:
 /vis/viewer/set/autoRefresh true
 
-#/run/beamOn 1
-#/run/beamOn 1000
+/run/beamOn 1000
