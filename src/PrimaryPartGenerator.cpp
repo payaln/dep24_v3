@@ -7,7 +7,7 @@
 void PrimaryPartGenerator::GeneratePrimaries(G4Event *anEvent) {
     GGamma->SetParticleMomentumDirection({-1.,G4RandFlat::shoot(-0.5, 0.5),G4RandFlat::shoot(-0.5, 0.5)});
     GenEnergy();
-    GGamma->SetParticlePosition({-20, G4RandFlat::shoot(-2, 2), G4RandFlat::shoot(-100, 100)});
+    GGamma->SetParticlePosition({70 * mm, G4RandFlat::shoot(-50, 50) * mm, G4RandFlat::shoot(-100, 100) * mm});
     GGamma->GeneratePrimaryVertex(anEvent);
 }
 
@@ -28,7 +28,7 @@ void PrimaryPartGenerator::GenEnergy() {
     if (singleEnergy) {
         k_E = 1;
     } else {
-        k_E = G4RandFlat::shootInt(4);
+        k_E = G4RandFlat::shootInt(5);
     }
     switch (k_E) {
         case 0:
