@@ -5,9 +5,13 @@
 
 
 void PrimaryPartGenerator::GeneratePrimaries(G4Event *anEvent) {
-    GGamma->SetParticleMomentumDirection({-1.,G4RandFlat::shoot(-0.5, 0.5),G4RandFlat::shoot(-0.5, 0.5)});
+    double phi = G4RandFlat::shoot(0., 2 * 3.14);
+    double cosT = G4RandFlat::shoot(0., 1.);
+    double sinT = std::sqrt(1 - cosT*cosT);
+    GGamma->SetParticleMomentumDirection({-cosT, sinT * std::sin(phi), sinT * std::cos(phi)});
     GenEnergy();
-    GGamma->SetParticlePosition({70 * mm, G4RandFlat::shoot(-50, 50) * mm, G4RandFlat::shoot(-100, 100) * mm});
+//    GGamma->SetParticleEnergy(0.01*MeV);
+    GGamma->SetParticlePosition({70 * mm, 20 * mm, 0 * mm});
     GGamma->GeneratePrimaryVertex(anEvent);
 }
 
@@ -51,6 +55,6 @@ void PrimaryPartGenerator::GenEnergy() {
     }
 }
 
-void PrimaryPartGenerator::setSingleEnergy(G4bool singleEnergy) {
-    PrimaryPartGenerator::singleEnergy = singleEnergy;
+void PrimaryPartGenerator::setSingleEnergy(G4bool energy) {
+    PrimaryPartGenerator::singleEnergy = energy;
 }
