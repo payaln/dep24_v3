@@ -35,6 +35,7 @@
 
 #include "GlobalMessenger.h"
 #include "ElectricField.h"
+#include "MyVisCommandSceneAddElectricField.h"
 
 class Geometry : public G4VUserDetectorConstruction {
 public:

@@ -1,7 +1,6 @@
 //
 // Created by payaln on 20.02.2019.
 //
-#include <Geometry.h>
 
 #include "Geometry.h"
 
@@ -47,6 +46,7 @@ Geometry::Geometry() : XeDensity(0.3), E_in_KV(50.) {
     (new GlobalMessenger<Geometry>(this))
             ->AddCommand<G4double>("set_Xe_density", &Geometry::setNewXeDensity, "density Xe")
             ->AddCommand<G4double>("set_E_KV", &Geometry::setNewE, "set electric field strength");
+    new MyVisCommandSceneAddElectricField();
 }
 
 void Geometry::setNewXeDensity(G4double value) {
