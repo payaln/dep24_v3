@@ -6,7 +6,7 @@
 #include "RunAction.h"
 
 void RunAction::BeginOfRunAction(const G4Run *aRun) {
-    spectr.fill(0);
+//    spectr.fill(0);
 }
 
 void RunAction::EndOfRunAction(const G4Run *aRun) {

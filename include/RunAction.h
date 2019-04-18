@@ -15,6 +15,7 @@
 
 class RunAction : public G4UserRunAction {
 public:
+    RunAction() {spectr.fill(0);}
     void BeginOfRunAction(const G4Run *aRun) override;
     void EndOfRunAction(const G4Run *aRun) override;
     void AddEvent(size_t channel);
